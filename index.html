@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Jsvectormap (Workspace)</title>
+    <title>Precisely_Map</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./dist/css/jsvectormap.css" />
     <script src="js/jsvectormap.js"></script>
@@ -12,10 +12,8 @@
 </head>
 <body>
   <div class="root">  
-    <div class="root__image">
-     
-      <img class="tower-image" src="assets/images/bgimage.png" alt="none">
-    
+    <div class="root__image">     
+      <img class="tower-image" src="assets/images/bgimage.png" alt="none">    
     </div>
 
     <div id="main_grid" class="main__grid workspace-wrapper">
@@ -73,8 +71,12 @@
       markersSelectableOne: true,
 
       regionStyle: {
-        initial: { fill: '#d1d5db' }
+        initial: { fill: '#01b3fb ' },
+        hover: { fill: '#57cdff' },
+    selected: { fill: '#0bb0b3' },
+    selectedHover: { fill: '#0bb0b3' },
       },
+   
 
       // Labels
       labels: {
@@ -113,8 +115,8 @@
       onRegionTooltipShow: function (tooltip, index) {
         console.log(tooltip, index)
 
-        tooltip.css({ backgroundColor: 'white', color: '#35373e' }).text(
-          tooltip.text() + ' (Hello World `region`)'
+        tooltip.css({ zIndex:20,backgroundColor: 'white', color: '#35373e' }).text(
+          tooltip.text() 
         )
       },
 
@@ -126,7 +128,7 @@
       //IF  
       onMarkerTooltipShow: function (tooltip, code) {
         tooltip.text(
-          tooltip.text() + ' (Hello World (marker))'
+          tooltip.text() 
         )
       },
     })
