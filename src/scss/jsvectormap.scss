@@ -171,11 +171,10 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
 
 //ROOT CONTAINER 
 .root{  
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 85%;
   margin-top: 5%;
-  
   
 
   // FOLLOWING IS  FOR THE IMAGE
@@ -183,14 +182,15 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
     position: absolute;
     top: 0;
     right: 0; 
-    width: 35%;
-    height: 100%;
-    display: flex;
-    justify-content: end;
+    width: 40%;
+   
+    height: 100%;        
+    z-index: 10;
+
     .tower-image{
     width: 100%;   
-    height: 85%;
-      
+    height: 100%;
+    z-index: 10;      
     }
   }
   
@@ -202,8 +202,11 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
   display: grid;
   grid-template-rows: 0.2fr 2fr ;
   position: absolute;
+  width: 100%;
+  
   top:0;
   left:0;
+  z-index: 15;
   &-row{
     background-color:transparent ;    
   }
