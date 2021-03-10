@@ -1,0 +1,271 @@
+// FONT RELATED STUFF
+$font-family-header-primary:Arial;
+
+// TEXT SIZES
+$description-header-size:4rem;
+
+//Colors
+$description-header-color:#5c5cff;
+$description-image-gradient-primary: #0daac5;
+$description-image-gradient-tertiary:#4eb3ca;
+
+
+// Class prefix
+$classPrefix: jvm- !default;
+$border-color: #e5e7eb;
+$box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+// Tooltip
+$tooltip-shadow: 1px 2px 12px rgba(0, 0, 0, .2) !default;
+$tooltip-font-family: sans-serif, Verdana !default;
+$tooltip-bg-color: #5c5cff !default;
+$tooltip-radius: 3px !default;
+$tooltip-font-size: smaller !default;
+$tooltip-padding: 3px 5px !default;
+
+// Zoom buttons
+$zoom-btns-bg-color: #292929 !default;
+$zoom-btns-radius: 3px !default;
+$zoom-btns-height: 15px !default;
+$zoom-btns-padding: 3px !default;
+$zoom-btns-width: 15px !default;
+
+// Series
+$series-container-right: 15px !default;
+
+// Legends
+$legend-background-color: #FFF !default;
+$legend-radius: 0.25rem !default;
+$legend-margin-left: .75rem !default;
+$legend-padding: 0.6rem !default;
+
+// Legend title
+$legend-title-padding-bottom: 0.5rem !default;
+$legend-title-margin-bottom: 0.575rem !default;
+
+// Legend ticks
+$legend-tick-margin-top: .575rem !default;
+$legend-tick-sample-radius: 4px !default;
+$legend-tick-sample-height: 16px !default;
+$legend-tick-sample-width: 16px !default;
+$legend-tick-text-font-size: 12px !default;
+$legend-tick-text-margin-top: 3px !default;
+
+// Global resets
+svg { touch-action: none }
+image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none }
+
+// jsVectorMap container
+.#{$classPrefix}container {
+  touch-action: none;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+// Tooltip
+.#{$classPrefix}tooltip {
+  border-radius: $tooltip-radius;
+  background-color: $tooltip-bg-color;
+  font-family: $tooltip-font-family;
+  font-size: $tooltip-font-size;
+  box-shadow: $tooltip-shadow;
+  padding: $tooltip-padding;
+  white-space: nowrap;
+  position: absolute;
+  display: none;
+  color: #FFF;
+}
+
+// Zoom buttons
+.#{$classPrefix}zoom-btn {
+  border-radius: $zoom-btns-radius;
+  background-color: $zoom-btns-bg-color;
+  padding: $zoom-btns-padding;
+  box-sizing: border-box;
+  position: absolute;
+  line-height: 10px;
+  cursor: pointer;
+  color: #FFF;
+  height: 15px;
+  width: 15px;
+  left: 10px;
+
+  &.#{$classPrefix}zoomout {
+    top: 30px
+  }
+
+  &.#{$classPrefix}zoomin {
+    top: 10px
+  }
+}
+
+// Series
+.#{$classPrefix}series-container {
+  right: $series-container-right;
+  position: absolute;
+
+  // horizontal
+  &.#{$classPrefix}series-h { bottom: 15px }
+
+  // Vertical
+  &.#{$classPrefix}series-v { top: 15px }
+
+  // Legends
+  .#{$classPrefix}legend {
+    background-color: $legend-background-color;
+    border: 1px solid $border-color;
+    margin-left: $legend-margin-left;
+    border-radius: $legend-radius;
+    border-color: $border-color;
+    padding: $legend-padding;
+    box-shadow: $box-shadow;
+    float: left;
+
+    .#{$classPrefix}legend-title {
+      line-height: 1;
+      border-bottom: 1px solid $border-color;
+      padding-bottom: $legend-title-padding-bottom;
+      margin-bottom: $legend-title-margin-bottom;
+      text-align: left;
+    }
+
+    .#{$classPrefix}legend-inner {
+      overflow: hidden;
+
+      .#{$classPrefix}legend-tick {
+        overflow: hidden;
+        min-width: 40px;
+        &:not(:first-child) {
+          margin-top: $legend-tick-margin-top;
+        }
+
+        .#{$classPrefix}legend-tick-sample {
+          border-radius: $legend-tick-sample-radius;
+          margin-right: .65rem;
+          height: $legend-tick-sample-height;
+          width: $legend-tick-sample-width;
+          float: left;
+        }
+
+        .#{$classPrefix}legend-tick-text {
+          font-size: $legend-tick-text-font-size;
+          text-align: center;
+          float: left;
+        }
+      }
+    }
+  }
+}
+
+// Line animation
+.jvm-line[animation="true"] {
+  -webkit-animation: jvm-line-animation 10s linear forwards infinite;
+  animation: jvm-line-animation 10s linear forwards infinite;
+
+  @keyframes jvm-line-animation {
+    from { stroke-dashoffset: 250; }
+  }
+}
+
+//ROOT CONTAINER 
+.root{  
+  position: absolute;
+  width: 100%;
+  height: 85%;
+  margin-top: 5%;
+  
+  
+
+  // FOLLOWING IS  FOR THE IMAGE
+  &__image{  
+    position: absolute;
+    top: 0;
+    right: 0; 
+    width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    .tower-image{
+    width: 100%;   
+    height: 85%;
+      
+    }
+  }
+  
+}
+
+
+// Grid CSS
+.main__grid{
+  display: grid;
+  grid-template-rows: 0.2fr 2fr ;
+  position: absolute;
+  top:0;
+  left:0;
+  &-row{
+    background-color:transparent ;    
+  }
+}
+.description{
+  background-blend-mode: screen;
+  background-image: linear-gradient(to top , $description-image-gradient-primary,$description-image-gradient-tertiary ),url("https://images.unsplash.com/photo-1515884045391-a9e471f4d36f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80");
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  height: 90%;
+  margin: 5% 5%;
+  padding: 2rem;  
+  background-size: cover;
+  border-radius: 25px;
+  box-shadow: 0 1.2rem 2rem rgba(0, 0, 0, .3);
+  
+  &-head{
+    font-size: $description-header-size;
+    color: $description-image-gradient-tertiary ;
+    letter-spacing: 2rem;
+    text-transform: uppercase;
+  }
+  
+  &-card{
+    background-color: rgba(256,256,256, .8);
+    margin-top: 10%;
+    padding: 1rem 1.2rem;
+    width: 95%;
+    border-radius: 5px;
+    min-height: 50%;
+    box-shadow: 0 1rem 2rem rgba(256,256,256, .2);
+  }
+}
+
+#description-block{
+  display:none;
+}
+
+// FOR HEADING IN MAP ELEMENT FIRST GRID COMPNENT
+.header{
+padding:0 4rem ;
+}
+
+.main__heading{
+  display: block;
+  line-height: 1.2;  
+  &-small{
+    color:	#A9A9A9;
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family:$font-family-header-primary ;    
+  }
+  &-medium{
+    display: inline-block;
+    font-size: 2rem;
+    background-image: linear-gradient(90deg, rgba(255,0,216,1) 0%, rgb(142, 102, 252) 50%, rgba(1,179,251,1) 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    padding-bottom: 3rem;
+  }
+
+  
+}
