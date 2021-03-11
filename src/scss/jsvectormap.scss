@@ -267,7 +267,7 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
   
   &-card{
     background-color: #292929;    
-    margin:0 2%;
+    margin:0 0;
     padding: 1rem 1.2rem;
     min-width: 90%;
     border-radius: 5px;    
@@ -276,11 +276,20 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
     position: absolute;
     top:45%;
     left:3%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-gap: 1rem;
 
     @media only screen  and (max-width:$bp-small){
       top:7rem;
       margin-top: 0%;
       padding: 0.5rem 1rem;    
+    }
+
+    &-item{
+      border-radius: 10px;
+      background: linear-gradient(180deg, rgba(156,40,226,1) 0%, rgba(210,137,255,1) 50%);
+      height:100%;
     }
     
   }
