@@ -1,5 +1,6 @@
 // MEDIA VARIABLES
 $bp-largest:75em;//1200px
+$bp-medium:56.5rem;//900px
 $bp-small:37.5em;//600px
 
 
@@ -183,15 +184,15 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
   // FOLLOWING IS  FOR THE IMAGE
   &__image{  
     position: relative;  
-    width: 35%;
-    height: 50%;   
+    width: 100%;
+    height: 35%;   
     z-index: 10;     
   }   
 }
 .tower-image{   
   position: absolute;
   top: 0;
-  right: 10rem; 
+  right: 8rem; 
   max-width: 100%;   
   height: 100%;
   z-index: 11; 
@@ -207,7 +208,7 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
 // Grid CSS
 .main__grid{
   display: grid;
-  grid-template-rows: 0.2fr 2fr ;
+  grid-template-rows: 1min-content ;
   position: absolute;
   min-width: 100%;
   z-index: 15;
@@ -223,10 +224,10 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
 // FOR DARK BACKGROUND IN DESCRIPTION CONATINER
 .desc-main{
   position: relative;
-  height:100%;
-  width: 90%;
+  height:140vh;
+  width: 100%;
   margin:0 auto;
-  background: rgb(0, 0, 0);
+  
   padding: 1rem;
 }
 
@@ -260,6 +261,10 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
     color: $description-image-gradient-tertiary ;
     letter-spacing: 2rem;
     text-transform: uppercase;
+    @media only screen  and (max-width:$bp-medium){
+      font-size: 3.5rem; 
+      letter-spacing: 0.8rem;     
+    }
     @media only screen  and (max-width:$bp-small){
       font-size: 2rem; 
       letter-spacing: 0.5rem;     
@@ -270,16 +275,18 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
     background-color: #292929;    
     margin:0 0;
     padding: 1.5rem ;
-    width: 90%;
+    width: 85%;
     border-radius: 15px;    
     height: 100%;
     // box-shadow: 0 1rem 2rem rgba(256,256,256, .2);
     position: absolute;
-    top:32%;
-    left:5%;
+    top:30%;
+    left:50%;   
+    margin-left:-42.5%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     grid-gap: 1.5rem;
+    z-index: 200000;
 
     @media only screen  and (max-width:$bp-small){
       top:7rem;
@@ -292,7 +299,7 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
       border-radius: 10px;
       background: linear-gradient(180deg, rgba(156,40,226,1) 0%, rgba(210,137,255,1) 50%);
       width: 100%;
-      min-height:100%;
+      min-height:26rem;
       display :flex;
       flex-direction: column;
       align-items: center;
