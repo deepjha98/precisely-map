@@ -23,7 +23,7 @@
             <animate
               attributeName="stop-color"
               values="#ee7752; #e73c7e; #23a6d5; #23d5ab"
-              dur="7s"
+              dur="2s"
               repeatCount="indefinite"
             />
           </stop>
@@ -32,13 +32,13 @@
             <animate
               attributeName="stop-color"
               values="#23d5ab;#23a6d5;#e73c7e;#ee7752;"
-              dur="7s"
+              dur="2s"
               repeatCount="indefinite"
             />
             <animate
               attributeName="offset"
               values=".95;.80;.60;.40;.20;0;.20;.40;.60;.80;.95"
-              dur="7s"
+              dur="2s"
               repeatCount="indefinite"
             />
           </stop>
@@ -48,7 +48,7 @@
 
     <div class="root">
       <div class="root__image">
-        <!-- <img class="tower-image" src="assets/images/bgimage.png" alt="none">     -->
+        <!-- <img class="tower-image" src="assets/images/bgimage.png" alt="none" /> -->
       </div>
 
       <div id="main_grid" class="main__grid workspace-wrapper">
@@ -199,8 +199,8 @@
         { name: "Russia", coords: [61, 105] },
         { name: "Geenland", coords: [72, -42] },
         { name: "Canada", coords: [56.1304, -106.3468] },
-        { name: "Palestine", coords: [31.5, 34.8] },
         { name: "Brazil", coords: [-14.235, -51.9253] },
+        { name: "India", coords: [20.59, 78.96] },
       ];
 
       var map = new jsVectorMap({
@@ -210,12 +210,33 @@
 
         regionsSelectable: true,
         regionsSelectableOne: true,
-        markersSelectable: true,
+        markersSelectable: false,
         markersSelectableOne: true,
 
         regionStyle: {
           initial: { fill: "#d1d5db " },
-          selected: { fill: "url(#skyGradient) gray" },
+          selected: { fill: " gray" },
+        },
+        series: {
+          regions: [
+            {
+              attribute: "fill",
+              legend: {
+                title: "World Map",
+              },
+              scale: {
+                Precisely_Presence: "url(#skyGradient) gray",
+              },
+              values: {
+                // But when dealing with regions's series you should specify the region key.
+                RU: "Precisely_Presence",
+                BR: "Precisely_Presence",
+                CA: "Precisely_Presence",
+                GL: "Precisely_Presence",
+                IN: "Precisely_Presence",
+              },
+            },
+          ],
         },
 
         // Labels
@@ -242,9 +263,9 @@
           description_block.style.display = "block";
           // FOR HEADING
           description_head.innerHTML = CountryCodes[index];
-          // FOR DESCRIPTION
-          description_info.innerHTML =
-            "Canada is a country in the northern part of North America. Its ten provinces and three territories extend from the Atlantic to the Pacific and northward into the Arctic Ocean, covering 9.98 million square kilometres, making it the world's second-largest country by total area.";
+          // // FOR DESCRIPTION
+          // description_info.innerHTML =
+          //   "Canada is a country in the northern part of North America. Its ten provinces and three territories extend from the Atlantic to the Pacific and northward into the Arctic Ocean, covering 9.98 million square kilometres, making it the world's second-largest country by total area.";
           console.log("regionSelected", index, isSelected, selectedRegions);
         },
 
