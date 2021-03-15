@@ -1,20 +1,29 @@
 // MEDIA VARIABLES
-$bp-largest:75em;//1200px
-$bp-medium:56.5rem;//900px
-$bp-small:37.5em;//600px
-
+$bp-largest: 75em; //1200px
+$bp-medium: 56.5rem; //900px
+$bp-medium-next: 50rem; //800px
+$bp-small: 37.5em; //600px
 
 // FONT RELATED STUFF
-$font-family-header-primary:Arial;
+$font-family-header-primary: Arial;
 
 // TEXT SIZES
-$description-header-size:4rem;
+$description-header-size: 4rem;
 
 //Colors
-$description-header-color:#5c5cff;
+$description-header-color: #5c5cff;
 $description-image-gradient-primary: #0daac5;
-$description-image-gradient-tertiary:#ffffff;
+$description-image-gradient-tertiary: #ffffff;
 
+// gradient for map selected
+#gradient-horizontal {
+  --color-stop-1: rgba(255, 0, 216, 1);
+  --color-stop-2: rgb(142, 102, 252);
+  --color-stop-3: rgba(1, 179, 251, 1);
+  --color-stop-4: #27dbb1;
+  --color-stop-5: #ffdc18;
+  --color-stop-6: #ff3706;
+}
 
 // Class prefix
 $classPrefix: jvm- !default;
@@ -22,7 +31,7 @@ $border-color: #e5e7eb;
 $box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 
 // Tooltip
-$tooltip-shadow: 1px 2px 12px rgba(0, 0, 0, .2) !default;
+$tooltip-shadow: 1px 2px 12px rgba(0, 0, 0, 0.2) !default;
 $tooltip-font-family: sans-serif, Verdana !default;
 $tooltip-bg-color: #5c5cff !default;
 $tooltip-radius: 3px !default;
@@ -40,9 +49,9 @@ $zoom-btns-width: 15px !default;
 $series-container-right: 15px !default;
 
 // Legends
-$legend-background-color: #FFF !default;
+$legend-background-color: #fff !default;
 $legend-radius: 0.25rem !default;
-$legend-margin-left: .75rem !default;
+$legend-margin-left: 0.75rem !default;
 $legend-padding: 0.6rem !default;
 
 // Legend title
@@ -50,7 +59,7 @@ $legend-title-padding-bottom: 0.5rem !default;
 $legend-title-margin-bottom: 0.575rem !default;
 
 // Legend ticks
-$legend-tick-margin-top: .575rem !default;
+$legend-tick-margin-top: 0.575rem !default;
 $legend-tick-sample-radius: 4px !default;
 $legend-tick-sample-height: 16px !default;
 $legend-tick-sample-width: 16px !default;
@@ -58,8 +67,15 @@ $legend-tick-text-font-size: 12px !default;
 $legend-tick-text-margin-top: 3px !default;
 
 // Global resets
-svg { touch-action: none }
-image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none }
+svg {
+  touch-action: none;
+}
+image,
+text,
+.#{$classPrefix}zoomin,
+.#{$classPrefix}zoomout {
+  user-select: none;
+}
 
 // jsVectorMap container
 .#{$classPrefix}container {
@@ -81,7 +97,7 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
   white-space: nowrap;
   position: absolute;
   display: none;
-  color: #FFF;
+  color: #fff;
 }
 
 // Zoom buttons
@@ -93,17 +109,17 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
   position: absolute;
   line-height: 10px;
   cursor: pointer;
-  color: #FFF;
+  color: #fff;
   height: 15px;
   width: 15px;
   left: 10px;
 
   &.#{$classPrefix}zoomout {
-    top: 30px
+    top: 30px;
   }
 
   &.#{$classPrefix}zoomin {
-    top: 10px
+    top: 10px;
   }
 }
 
@@ -113,10 +129,14 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
   position: absolute;
 
   // horizontal
-  &.#{$classPrefix}series-h { bottom: 15px }
+  &.#{$classPrefix}series-h {
+    bottom: 15px;
+  }
 
   // Vertical
-  &.#{$classPrefix}series-v { top: 15px }
+  &.#{$classPrefix}series-v {
+    top: 15px;
+  }
 
   // Legends
   .#{$classPrefix}legend {
@@ -149,7 +169,7 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
 
         .#{$classPrefix}legend-tick-sample {
           border-radius: $legend-tick-sample-radius;
-          margin-right: .65rem;
+          margin-right: 0.65rem;
           height: $legend-tick-sample-height;
           width: $legend-tick-sample-width;
           float: left;
@@ -171,219 +191,236 @@ image, text, .#{$classPrefix}zoomin, .#{$classPrefix}zoomout { user-select: none
   animation: jvm-line-animation 10s linear forwards infinite;
 
   @keyframes jvm-line-animation {
-    from { stroke-dashoffset: 250; }
+    from {
+      stroke-dashoffset: 250;
+    }
   }
 }
 
-//ROOT CONTAINER 
-#root{  
+//ROOT CONTAINER
+#root {
   position: fixed;
   width: 100%;
-  height: 100%;   
+  height: 100%;
 
   // FOLLOWING IS  FOR THE IMAGE
-  &__image{  
-    position: relative;  
+  &__image {
+    position: relative;
     width: 100%;
-    height: 35%;   
-    z-index: 10;     
-  }   
+    height: 35%;
+    z-index: 10;
+  }
 }
-.tower-image{   
+.tower-image {
   position: absolute;
   top: 0;
-  right: 8rem; 
-  max-width: 100%;   
+  right: 8rem;
+  max-width: 100%;
   height: 100%;
-  z-index: 11; 
-  @media only screen  and (max-width:$bp-small){
-    max-width: 50%;   
+  z-index: 11;
+  @media only screen and (max-width: $bp-small) {
+    max-width: 50%;
     height: 50%;
-    right: 0rem; 
-  }     
+    right: 0rem;
+  }
 }
 
-
-
 // Grid CSS
-.main__grid{
+.main__grid {
   display: grid;
-  grid-template-rows: 1min-content ;
+  grid-template-rows: 15vh min-content;
   position: absolute;
+
   min-width: 100%;
   z-index: 15;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   z-index: 15;
-  &-row{
+  &-row {
     min-width: 100%;
-    background-color:transparent ;    
+    background-color: transparent;
   }
 }
 
 // FOR DARK BACKGROUND IN DESCRIPTION CONATINER
-.desc-main{
+.desc-main {
   position: relative;
-  height:140vh;
+  height: 140vh;
   width: 100%;
-  margin:0 auto;
-  
-  padding: 1rem;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
-.description{
+.description {
   background-blend-mode: screen;
-  background-image: url("https://images.unsplash.com/photo-1467357689433-255655dbce4d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=756&q=80"),linear-gradient(to top , $description-image-gradient-primary,$description-image-gradient-tertiary );
+  background-image: url("https://images.unsplash.com/photo-1467357689433-255655dbce4d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=756&q=80"),
+    linear-gradient(
+      to top,
+      $description-image-gradient-primary,
+      $description-image-gradient-tertiary
+    );
   background-size: contain;
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 96%;
-  min-height: 30%;
-  margin: 5% 2%;
-  padding: 4.5rem ; 
+  width: 94%;
+  height: 32%;
+
+  margin: 5% 3%;
+  padding: 4.5rem;
   background-size: cover;
   border-radius: 25px;
-  box-shadow: 0 1.2rem 2rem rgba(0, 0, 0, .3);
-  position: relative;
+  box-shadow: 0 1.2rem 2rem rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
 
-
-  @media only screen  and (max-width:$bp-small){
-    margin: 1% auto;
+  @media only screen and (max-width: $bp-small) {
     border-radius: 15px;
-    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, .3);  
-    padding: 2rem;  
-    min-height: 20%; 
+    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    height: 10%;
   }
-  
-  &-head{
+  @media only screen and (max-width: $bp-medium-next) {
+    border-radius: 15px;
+    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.3);
+    padding: 2.5rem;
+    height: 15%;
+  }
+
+  &-head {
     font-size: $description-header-size;
-    color: $description-image-gradient-tertiary ;
+    color: $description-image-gradient-tertiary;
     letter-spacing: 2rem;
     text-transform: uppercase;
-    @media only screen  and (max-width:$bp-medium){
-      font-size: 3.5rem; 
-      letter-spacing: 0.8rem;     
+    @media only screen and (max-width: $bp-medium) {
+      font-size: 3.5rem;
+      letter-spacing: 0.8rem;
     }
-    @media only screen  and (max-width:$bp-small){
-      font-size: 2rem; 
-      letter-spacing: 0.5rem;     
+    @media only screen and (max-width: $bp-small) {
+      font-size: 2rem;
+      letter-spacing: 0.5rem;
     }
   }
-  
-  &-card{
-    background-color: #292929;    
-    margin:0 0;
-    padding: 1.5rem ;
+
+  &-card {
+    background-color: #292929;
+    margin: 0 0;
+    padding: 1.5rem;
     width: 85%;
-    border-radius: 15px;    
-    height: 100%;
+    border-radius: 15px;
+
     // box-shadow: 0 1rem 2rem rgba(256,256,256, .2);
     position: absolute;
-    top:30%;
-    left:50%;   
-    margin-left:-42.5%;
+    top: 30%;
+    left: 50%;
+    margin-left: -42.5%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
     grid-gap: 1.5rem;
     z-index: 200000;
 
-    @media only screen  and (max-width:$bp-small){
-      top:7rem;
+    @media only screen and (max-width: $bp-small) {
+      top: 7rem;
       margin-top: 0%;
-      padding: 1.5rem;    
+      padding: 1.5rem;
     }
-
-    &-item{
+    &-item {
       // THIS IS THE VIOLET AND PINK COLOR MULTIPLE CARD
       border-radius: 10px;
-      background: linear-gradient(180deg, rgba(156,40,226,1) 0%, rgba(210,137,255,1) 50%);
-      width: 100%;
-      min-height:26rem;
-      display :flex;
+      background: linear-gradient(
+        180deg,
+        rgba(156, 40, 226, 1) 0%,
+        rgba(210, 137, 255, 1) 50%
+      );
+      max-width: 100%;
+      min-height: 25rem;
+      display: flex;
       flex-direction: column;
       align-items: center;
       color: #e5e7eb;
-      font-family: "Nunito",Arial, Helvetica, sans-serif;
+      font-family: "Nunito", Arial, Helvetica, sans-serif;
 
-      &__head{
+      &__head {
         // THIS IS FOR CARD HEADING
         font-size: 1.5rem;
-        padding:1.5rem 1.5rem;
+        padding: 1.5rem 1.5rem;
         height: 15%;
         width: 100%;
-        border-bottom:1.5px solid whitesmoke;         
+        border-bottom: 1.5px solid whitesmoke;
       }
 
-      &__list{
+      &__list {
         // THIS IS FOR THE LIST IN CARD
         width: 100%;
-        height:68%;
+        height: 68%;
         padding: 2rem;
       }
 
-      &__button{
+      &__button {
         background: none;
         color: whitesmoke;
         font-weight: 700;
-        font-size: 3rem;        
+        font-size: 3rem;
         border: none;
         padding: 0;
         font: inherit;
         cursor: pointer;
-        border :2.5px solid whitesmoke;
+        border: 2.5px solid whitesmoke;
         border-radius: 10px;
         width: 80%;
         padding: 1rem 2rem;
-        outline:none;
-
+        outline: none;
       }
     }
-    
   }
-  &-info{
+  &-info {
     font-size: 1rem;
-    @media only screen  and (max-width:$bp-small){
-      font-size: 1rem;      
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1rem;
     }
   }
 }
 
-#description-block{
-  display:none;
+#description-block {
+  display: none;
 }
 
 // FOR HEADING IN MAP ELEMENT FIRST GRID COMPNENT
-.header{
-padding:1rem 4rem ;
-@media only screen  and (max-width:$bp-small){
-  padding: 1rem 1rem; 
-}
+.header {
+  padding: 1rem 4rem;
+  @media only screen and (max-width: $bp-small) {
+    padding: 1rem 1rem;
+  }
 }
 
-.main__heading{
+.main__heading {
   display: block;
-  line-height: 1.2;  
-  &-small{
-    color:	#A9A9A9;
+  line-height: 1.2;
+  &-small {
+    color: whitesmoke;
     font-size: 1.2rem;
     font-weight: 500;
-    font-family:$font-family-header-primary ;    
-    @media only screen  and (max-width:$bp-small){
-      font-size: 1rem;      
+    font-family: $font-family-header-primary;
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1rem;
     }
   }
-  &-medium{
+  &-medium {
     display: inline-block;
     font-size: 2rem;
-    background-image: linear-gradient(90deg, rgba(255,0,216,1) 0%, rgb(142, 102, 252) 50%, rgba(1,179,251,1) 100%);
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 0, 216, 1) 0%,
+      rgb(142, 102, 252) 50%,
+      rgba(1, 179, 251, 1) 100%
+    );
     -webkit-background-clip: text;
     color: transparent;
-    padding-bottom: 3rem; 
-    @media only screen  and (max-width:$bp-small){
-      font-size: 1.5rem;  
-      padding-bottom: 2rem;     
-    }  
+    padding-bottom: 3rem;
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.5rem;
+      padding-bottom: 2rem;
+    }
   }
-  
 }

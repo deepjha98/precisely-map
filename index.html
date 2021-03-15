@@ -1,218 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Precisely_Map</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./dist/css/jsvectormap.css" />
     <script src="js/jsvectormap.js"></script>
     <script src="./dist/maps/world-merc.js"></script>
-</head>
-<body>
-  <div class="root">  
-    <div class="root__image">     
-      <img class="tower-image" src="assets/images/bgimage.png" alt="none">    
-    </div>
+  </head>
+  <body>
+    <!-- // Following block is for map gradient effect -->
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      style="width: 0; height: 0; position: absolute"
+    >
+      <defs>
+        <linearGradient id="skyGradient" x1="100%" y1="100%">
+          <stop offset="0%" stop-color="lightblue" stop-opacity=".5">
+            <animate
+              attributeName="stop-color"
+              values="#ee7752; #e73c7e; #23a6d5; #23d5ab"
+              dur="7s"
+              repeatCount="indefinite"
+            />
+          </stop>
 
-    <div id="main_grid" class="main__grid workspace-wrapper">
-      <div class="main__grid-row header">
-        <h5 class="main__heading main__heading-small ">Find the oppportunity at your</h5>
-        <span class="main__heading-gradient"><h3 class="main__heading main__heading-medium" >dream location</h3></span>
-      </div>
-      <div class="main__grid-row map">
-        <div id="map"></div>
+          <stop offset="100%" stop-color="lightblue" stop-opacity=".5">
+            <animate
+              attributeName="stop-color"
+              values="#23d5ab;#23a6d5;#e73c7e;#ee7752;"
+              dur="7s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="offset"
+              values=".95;.80;.60;.40;.20;0;.20;.40;.60;.80;.95"
+              dur="7s"
+              repeatCount="indefinite"
+            />
+          </stop>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div class="root">
+      <div class="root__image">
+        <!-- <img class="tower-image" src="assets/images/bgimage.png" alt="none">     -->
       </div>
 
-      <!-- INFORMATION DIV -->
-      <div class="main__grid-row" id ="description-block">
-        <div class="desc-main">
-          <div class="description">
-            
-            <h3 id="description-head" class="description-head">
-              <!-- FOR THE HEADING WHEN DATA REGION IS CLICKED  -->
-            </h3>           
-          </div>
-          <div class="description-card">
-            <div class="description-card-item">
-              <h3 class="description-card-item__head">
-                Basic Plan
+      <div id="main_grid" class="main__grid workspace-wrapper">
+        <div class="main__grid-row header">
+          <h5 class="main__heading main__heading-small">
+            Find the oppportunity at your
+          </h5>
+          <span class="main__heading-gradient"
+            ><h3 class="main__heading main__heading-medium">
+              dream location
+            </h3></span
+          >
+        </div>
+        <div class="main__grid-row map">
+          <div id="map"></div>
+        </div>
+
+        <!-- INFORMATION DIV -->
+        <div class="main__grid-row" id="description-block">
+          <div class="desc-main">
+            <div class="description">
+              <h3 id="description-head" class="description-head">
+                <!-- FOR THE HEADING WHEN DATA REGION IS CLICKED  -->
               </h3>
-              <ul class="description-card-item__list">
-                <li class="description-card-item__list-item">First point to be noted</li>
-                <li class="description-card-item__list-item">Second is the frst point</li>
-                <li class="description-card-item__list-item">we are here to set an example for new generation</li>
-              </ul>
-              <button class="description-card-item__button">
-                Enroll Now
-              </button>
             </div>
-            <div class="description-card-item">
-              <h3 class="description-card-item__head">
-                Basic Plan
-              </h3>
-              <ul class="description-card-item__list">
-                <li class="description-card-item__list-item">First point to be noted</li>
-                <li class="description-card-item__list-item">Second is the frst point</li>
-                <li class="description-card-item__list-item">we are here to set an example for new generation</li>
-              </ul>
-              <button class="description-card-item__button">
-                Enroll Now
-              </button>
-            </div><div class="description-card-item">
-              <h3 class="description-card-item__head">
-                Basic Plan
-              </h3>
-              <ul class="description-card-item__list">
-                <li class="description-card-item__list-item">First point to be noted</li>
-                <li class="description-card-item__list-item">Second is the frst point</li>
-                <li class="description-card-item__list-item">we are here to set an example for new generation</li>
-              </ul>
-              <button class="description-card-item__button">
-                Enroll Now
-              </button>
-            </div><div class="description-card-item">
-              <h3 class="description-card-item__head">
-                Basic Plan
-              </h3>
-              <ul class="description-card-item__list">
-                <li class="description-card-item__list-item">First point to be noted</li>
-                <li class="description-card-item__list-item">Second is the frst point</li>
-                <li class="description-card-item__list-item">we are here to set an example for new generation</li>
-              </ul>
-              <button class="description-card-item__button">
-                Enroll Now
-              </button>
-            </div><div class="description-card-item">
-              <h3 class="description-card-item__head">
-                Basic Plan
-              </h3>
-              <ul class="description-card-item__list">
-                <li class="description-card-item__list-item">First point to be noted</li>
-                <li class="description-card-item__list-item">Second is the frst point</li>
-                <li class="description-card-item__list-item">we are here to set an example for new generation</li>
-              </ul>
-              <button class="description-card-item__button">
-                Enroll Now
-              </button>
-            </div><div class="description-card-item">
-              <h3 class="description-card-item__head">
-                Basic Plan
-              </h3>
-              <ul class="description-card-item__list">
-                <li class="description-card-item__list-item">First point to be noted</li>
-                <li class="description-card-item__list-item">Second is the frst point</li>
-                <li class="description-card-item__list-item">we are here to set an example for new generation</li>
-              </ul>
-              <button class="description-card-item__button">
-                Enroll Now
-              </button>
-            </div>       
+            <div class="description-card">
+              <div class="description-card-item">
+                <h3 class="description-card-item__head">Basic Plan</h3>
+                <ul class="description-card-item__list">
+                  <li class="description-card-item__list-item">
+                    First point to be noted
+                  </li>
+                  <li class="description-card-item__list-item">
+                    Second is the frst point
+                  </li>
+                  <li class="description-card-item__list-item">
+                    we are here to set an example for new generation
+                  </li>
+                </ul>
+                <button class="description-card-item__button">
+                  Enroll Now
+                </button>
+              </div>
+              <div class="description-card-item">
+                <h3 class="description-card-item__head">Basic Plan</h3>
+                <ul class="description-card-item__list">
+                  <li class="description-card-item__list-item">
+                    First point to be noted
+                  </li>
+                  <li class="description-card-item__list-item">
+                    Second is the frst point
+                  </li>
+                  <li class="description-card-item__list-item">
+                    we are here to set an example for new generation
+                  </li>
+                </ul>
+                <button class="description-card-item__button">
+                  Enroll Now
+                </button>
+              </div>
+              <div class="description-card-item">
+                <h3 class="description-card-item__head">Basic Plan</h3>
+                <ul class="description-card-item__list">
+                  <li class="description-card-item__list-item">
+                    First point to be noted
+                  </li>
+                  <li class="description-card-item__list-item">
+                    Second is the frst point
+                  </li>
+                  <li class="description-card-item__list-item">
+                    we are here to set an example for new generation
+                  </li>
+                </ul>
+                <button class="description-card-item__button">
+                  Enroll Now
+                </button>
+              </div>
+              <div class="description-card-item">
+                <h3 class="description-card-item__head">Basic Plan</h3>
+                <ul class="description-card-item__list">
+                  <li class="description-card-item__list-item">
+                    First point to be noted
+                  </li>
+                  <li class="description-card-item__list-item">
+                    Second is the frst point
+                  </li>
+                  <li class="description-card-item__list-item">
+                    we are here to set an example for new generation
+                  </li>
+                </ul>
+                <button class="description-card-item__button">
+                  Enroll Now
+                </button>
+              </div>
+              <div class="description-card-item">
+                <h3 class="description-card-item__head">Basic Plan</h3>
+                <ul class="description-card-item__list">
+                  <li class="description-card-item__list-item">
+                    First point to be noted
+                  </li>
+                  <li class="description-card-item__list-item">
+                    Second is the frst point
+                  </li>
+                  <li class="description-card-item__list-item">
+                    we are here to set an example for new generation
+                  </li>
+                </ul>
+                <button class="description-card-item__button">
+                  Enroll Now
+                </button>
+              </div>
+              <div class="description-card-item">
+                <h3 class="description-card-item__head">Basic Plan</h3>
+                <ul class="description-card-item__list">
+                  <li class="description-card-item__list-item">
+                    First point to be noted
+                  </li>
+                  <li class="description-card-item__list-item">
+                    Second is the frst point
+                  </li>
+                  <li class="description-card-item__list-item">
+                    we are here to set an example for new generation
+                  </li>
+                </ul>
+                <button class="description-card-item__button">
+                  Enroll Now
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>        
+      </div>
     </div>
-  </div>
 
-  <script>
-    var main_grid =document.getElementById("main_grid");
-    var description_block =document.getElementById("description-block");
-    var description_head =document.getElementById("description-head");
-    var description_info =document.getElementById("description-info");
-   
-    
-    // VARIABLE FOR SELECTED REGION OR NOT
-    var selectedRegionCheck=false;
-    var CountryCodes = JSON.parse('{"BD": "Bangladesh", "BE": "Belgium", "BF": "Burkina Faso", "BG": "Bulgaria", "BA": "Bosnia and Herzegovina", "BB": "Barbados", "WF": "Wallis and Futuna", "BL": "Saint Barthelemy", "BM": "Bermuda", "BN": "Brunei", "BO": "Bolivia", "BH": "Bahrain", "BI": "Burundi", "BJ": "Benin", "BT": "Bhutan", "JM": "Jamaica", "BV": "Bouvet Island", "BW": "Botswana", "WS": "Samoa", "BQ": "Bonaire, Saint Eustatius and Saba ", "BR": "Brazil", "BS": "Bahamas", "JE": "Jersey", "BY": "Belarus", "BZ": "Belize", "RU": "Russia", "RW": "Rwanda", "RS": "Serbia", "TL": "East Timor", "RE": "Reunion", "TM": "Turkmenistan", "TJ": "Tajikistan", "RO": "Romania", "TK": "Tokelau", "GW": "Guinea-Bissau", "GU": "Guam", "GT": "Guatemala", "GS": "South Georgia and the South Sandwich Islands", "GR": "Greece", "GQ": "Equatorial Guinea", "GP": "Guadeloupe", "JP": "Japan", "GY": "Guyana", "GG": "Guernsey", "GF": "French Guiana", "GE": "Georgia", "GD": "Grenada", "GB": "United Kingdom", "GA": "Gabon", "SV": "El Salvador", "GN": "Guinea", "GM": "Gambia", "GL": "Greenland", "GI": "Gibraltar", "GH": "Ghana", "OM": "Oman", "TN": "Tunisia", "JO": "Jordan", "HR": "Croatia", "HT": "Haiti", "HU": "Hungary", "HK": "Hong Kong", "HN": "Honduras", "HM": "Heard Island and McDonald Islands", "VE": "Venezuela", "PR": "Puerto Rico", "PS": "Palestinian Territory", "PW": "Palau", "PT": "Portugal", "SJ": "Svalbard and Jan Mayen", "PY": "Paraguay", "IQ": "Iraq", "PA": "Panama", "PF": "French Polynesia", "PG": "Papua New Guinea", "PE": "Peru", "PK": "Pakistan", "PH": "Philippines", "PN": "Pitcairn", "PL": "Poland", "PM": "Saint Pierre and Miquelon", "ZM": "Zambia", "EH": "Western Sahara", "EE": "Estonia", "EG": "Egypt", "ZA": "South Africa", "EC": "Ecuador", "IT": "Italy", "VN": "Vietnam", "SB": "Solomon Islands", "ET": "Ethiopia", "SO": "Somalia", "ZW": "Zimbabwe", "SA": "Saudi Arabia", "ES": "Spain", "ER": "Eritrea", "ME": "Montenegro", "MD": "Moldova", "MG": "Madagascar", "MF": "Saint Martin", "MA": "Morocco", "MC": "Monaco", "UZ": "Uzbekistan", "MM": "Myanmar", "ML": "Mali", "MO": "Macao", "MN": "Mongolia", "MH": "Marshall Islands", "MK": "Macedonia", "MU": "Mauritius", "MT": "Malta", "MW": "Malawi", "MV": "Maldives", "MQ": "Martinique", "MP": "Northern Mariana Islands", "MS": "Montserrat", "MR": "Mauritania", "IM": "Isle of Man", "UG": "Uganda", "TZ": "Tanzania", "MY": "Malaysia", "MX": "Mexico", "IL": "Israel", "FR": "France", "IO": "British Indian Ocean Territory", "SH": "Saint Helena", "FI": "Finland", "FJ": "Fiji", "FK": "Falkland Islands", "FM": "Micronesia", "FO": "Faroe Islands", "NI": "Nicaragua", "NL": "Netherlands", "NO": "Norway", "NA": "Namibia", "VU": "Vanuatu", "NC": "New Caledonia", "NE": "Niger", "NF": "Norfolk Island", "NG": "Nigeria", "NZ": "New Zealand", "NP": "Nepal", "NR": "Nauru", "NU": "Niue", "CK": "Cook Islands", "XK": "Kosovo", "CI": "Ivory Coast", "CH": "Switzerland", "CO": "Colombia", "CN": "China", "CM": "Cameroon", "CL": "Chile", "CC": "Cocos Islands", "CA": "Canada", "CG": "Republic of the Congo", "CF": "Central African Republic", "CD": "Democratic Republic of the Congo", "CZ": "Czech Republic", "CY": "Cyprus", "CX": "Christmas Island", "CR": "Costa Rica", "CW": "Curacao", "CV": "Cape Verde", "CU": "Cuba", "SZ": "Swaziland", "SY": "Syria", "SX": "Sint Maarten", "KG": "Kyrgyzstan", "KE": "Kenya", "SS": "South Sudan", "SR": "Suriname", "KI": "Kiribati", "KH": "Cambodia", "KN": "Saint Kitts and Nevis", "KM": "Comoros", "ST": "Sao Tome and Principe", "SK": "Slovakia", "KR": "South Korea", "SI": "Slovenia", "KP": "North Korea", "KW": "Kuwait", "SN": "Senegal", "SM": "San Marino", "SL": "Sierra Leone", "SC": "Seychelles", "KZ": "Kazakhstan", "KY": "Cayman Islands", "SG": "Singapore", "SE": "Sweden", "SD": "Sudan", "DO": "Dominican Republic", "DM": "Dominica", "DJ": "Djibouti", "DK": "Denmark", "VG": "British Virgin Islands", "DE": "Germany", "YE": "Yemen", "DZ": "Algeria", "US": "United States", "UY": "Uruguay", "YT": "Mayotte", "UM": "United States Minor Outlying Islands", "LB": "Lebanon", "LC": "Saint Lucia", "LA": "Laos", "TV": "Tuvalu", "TW": "Taiwan", "TT": "Trinidad and Tobago", "TR": "Turkey", "LK": "Sri Lanka", "LI": "Liechtenstein", "LV": "Latvia", "TO": "Tonga", "LT": "Lithuania", "LU": "Luxembourg", "LR": "Liberia", "LS": "Lesotho", "TH": "Thailand", "TF": "French Southern Territories", "TG": "Togo", "TD": "Chad", "TC": "Turks and Caicos Islands", "LY": "Libya", "VA": "Vatican", "VC": "Saint Vincent and the Grenadines", "AE": "United Arab Emirates", "AD": "Andorra", "AG": "Antigua and Barbuda", "AF": "Afghanistan", "AI": "Anguilla", "VI": "U.S. Virgin Islands", "IS": "Iceland", "IR": "Iran", "AM": "Armenia", "AL": "Albania", "AO": "Angola", "AQ": "Antarctica", "AS": "American Samoa", "AR": "Argentina", "AU": "Australia", "AT": "Austria", "AW": "Aruba", "IN": "India", "AX": "Aland Islands", "AZ": "Azerbaijan", "IE": "Ireland", "ID": "Indonesia", "UA": "Ukraine", "QA": "Qatar", "MZ": "Mozambique"}');
+    <script>
+      var main_grid = document.getElementById("main_grid");
+      var description_block = document.getElementById("description-block");
+      var description_head = document.getElementById("description-head");
+      var description_info = document.getElementById("description-info");
 
-    var markers = [
-      { name: 'Russia', coords: [61, 105] },
-      { name: 'Geenland', coords: [72, -42] },
-      { name: 'Canada', coords: [56.1304, -106.3468] },
-      { name: 'Palestine', coords: [31.5, 34.8] },
-      { name: 'Brazil', coords: [-14.2350, -51.9253] },
-    ];
+      // VARIABLE FOR SELECTED REGION OR NOT
+      var selectedRegionCheck = false;
+      var CountryCodes = JSON.parse(
+        '{"BD": "Bangladesh", "BE": "Belgium", "BF": "Burkina Faso", "BG": "Bulgaria", "BA": "Bosnia and Herzegovina", "BB": "Barbados", "WF": "Wallis and Futuna", "BL": "Saint Barthelemy", "BM": "Bermuda", "BN": "Brunei", "BO": "Bolivia", "BH": "Bahrain", "BI": "Burundi", "BJ": "Benin", "BT": "Bhutan", "JM": "Jamaica", "BV": "Bouvet Island", "BW": "Botswana", "WS": "Samoa", "BQ": "Bonaire, Saint Eustatius and Saba ", "BR": "Brazil", "BS": "Bahamas", "JE": "Jersey", "BY": "Belarus", "BZ": "Belize", "RU": "Russia", "RW": "Rwanda", "RS": "Serbia", "TL": "East Timor", "RE": "Reunion", "TM": "Turkmenistan", "TJ": "Tajikistan", "RO": "Romania", "TK": "Tokelau", "GW": "Guinea-Bissau", "GU": "Guam", "GT": "Guatemala", "GS": "South Georgia and the South Sandwich Islands", "GR": "Greece", "GQ": "Equatorial Guinea", "GP": "Guadeloupe", "JP": "Japan", "GY": "Guyana", "GG": "Guernsey", "GF": "French Guiana", "GE": "Georgia", "GD": "Grenada", "GB": "United Kingdom", "GA": "Gabon", "SV": "El Salvador", "GN": "Guinea", "GM": "Gambia", "GL": "Greenland", "GI": "Gibraltar", "GH": "Ghana", "OM": "Oman", "TN": "Tunisia", "JO": "Jordan", "HR": "Croatia", "HT": "Haiti", "HU": "Hungary", "HK": "Hong Kong", "HN": "Honduras", "HM": "Heard Island and McDonald Islands", "VE": "Venezuela", "PR": "Puerto Rico", "PS": "Palestinian Territory", "PW": "Palau", "PT": "Portugal", "SJ": "Svalbard and Jan Mayen", "PY": "Paraguay", "IQ": "Iraq", "PA": "Panama", "PF": "French Polynesia", "PG": "Papua New Guinea", "PE": "Peru", "PK": "Pakistan", "PH": "Philippines", "PN": "Pitcairn", "PL": "Poland", "PM": "Saint Pierre and Miquelon", "ZM": "Zambia", "EH": "Western Sahara", "EE": "Estonia", "EG": "Egypt", "ZA": "South Africa", "EC": "Ecuador", "IT": "Italy", "VN": "Vietnam", "SB": "Solomon Islands", "ET": "Ethiopia", "SO": "Somalia", "ZW": "Zimbabwe", "SA": "Saudi Arabia", "ES": "Spain", "ER": "Eritrea", "ME": "Montenegro", "MD": "Moldova", "MG": "Madagascar", "MF": "Saint Martin", "MA": "Morocco", "MC": "Monaco", "UZ": "Uzbekistan", "MM": "Myanmar", "ML": "Mali", "MO": "Macao", "MN": "Mongolia", "MH": "Marshall Islands", "MK": "Macedonia", "MU": "Mauritius", "MT": "Malta", "MW": "Malawi", "MV": "Maldives", "MQ": "Martinique", "MP": "Northern Mariana Islands", "MS": "Montserrat", "MR": "Mauritania", "IM": "Isle of Man", "UG": "Uganda", "TZ": "Tanzania", "MY": "Malaysia", "MX": "Mexico", "IL": "Israel", "FR": "France", "IO": "British Indian Ocean Territory", "SH": "Saint Helena", "FI": "Finland", "FJ": "Fiji", "FK": "Falkland Islands", "FM": "Micronesia", "FO": "Faroe Islands", "NI": "Nicaragua", "NL": "Netherlands", "NO": "Norway", "NA": "Namibia", "VU": "Vanuatu", "NC": "New Caledonia", "NE": "Niger", "NF": "Norfolk Island", "NG": "Nigeria", "NZ": "New Zealand", "NP": "Nepal", "NR": "Nauru", "NU": "Niue", "CK": "Cook Islands", "XK": "Kosovo", "CI": "Ivory Coast", "CH": "Switzerland", "CO": "Colombia", "CN": "China", "CM": "Cameroon", "CL": "Chile", "CC": "Cocos Islands", "CA": "Canada", "CG": "Republic of the Congo", "CF": "Central African Republic", "CD": "Democratic Republic of the Congo", "CZ": "Czech Republic", "CY": "Cyprus", "CX": "Christmas Island", "CR": "Costa Rica", "CW": "Curacao", "CV": "Cape Verde", "CU": "Cuba", "SZ": "Swaziland", "SY": "Syria", "SX": "Sint Maarten", "KG": "Kyrgyzstan", "KE": "Kenya", "SS": "South Sudan", "SR": "Suriname", "KI": "Kiribati", "KH": "Cambodia", "KN": "Saint Kitts and Nevis", "KM": "Comoros", "ST": "Sao Tome and Principe", "SK": "Slovakia", "KR": "South Korea", "SI": "Slovenia", "KP": "North Korea", "KW": "Kuwait", "SN": "Senegal", "SM": "San Marino", "SL": "Sierra Leone", "SC": "Seychelles", "KZ": "Kazakhstan", "KY": "Cayman Islands", "SG": "Singapore", "SE": "Sweden", "SD": "Sudan", "DO": "Dominican Republic", "DM": "Dominica", "DJ": "Djibouti", "DK": "Denmark", "VG": "British Virgin Islands", "DE": "Germany", "YE": "Yemen", "DZ": "Algeria", "US": "United States", "UY": "Uruguay", "YT": "Mayotte", "UM": "United States Minor Outlying Islands", "LB": "Lebanon", "LC": "Saint Lucia", "LA": "Laos", "TV": "Tuvalu", "TW": "Taiwan", "TT": "Trinidad and Tobago", "TR": "Turkey", "LK": "Sri Lanka", "LI": "Liechtenstein", "LV": "Latvia", "TO": "Tonga", "LT": "Lithuania", "LU": "Luxembourg", "LR": "Liberia", "LS": "Lesotho", "TH": "Thailand", "TF": "French Southern Territories", "TG": "Togo", "TD": "Chad", "TC": "Turks and Caicos Islands", "LY": "Libya", "VA": "Vatican", "VC": "Saint Vincent and the Grenadines", "AE": "United Arab Emirates", "AD": "Andorra", "AG": "Antigua and Barbuda", "AF": "Afghanistan", "AI": "Anguilla", "VI": "U.S. Virgin Islands", "IS": "Iceland", "IR": "Iran", "AM": "Armenia", "AL": "Albania", "AO": "Angola", "AQ": "Antarctica", "AS": "American Samoa", "AR": "Argentina", "AU": "Australia", "AT": "Austria", "AW": "Aruba", "IN": "India", "AX": "Aland Islands", "AZ": "Azerbaijan", "IE": "Ireland", "ID": "Indonesia", "UA": "Ukraine", "QA": "Qatar", "MZ": "Mozambique"}'
+      );
 
-    var map = new jsVectorMap({
-      map: 'world_merc',
-      selector: document.querySelector('#map'),
-      zoomButtons: true,
+      var markers = [
+        { name: "Russia", coords: [61, 105] },
+        { name: "Geenland", coords: [72, -42] },
+        { name: "Canada", coords: [56.1304, -106.3468] },
+        { name: "Palestine", coords: [31.5, 34.8] },
+        { name: "Brazil", coords: [-14.235, -51.9253] },
+      ];
 
-      regionsSelectable: true,
-      regionsSelectableOne:true,
-      markersSelectable: true,
-      markersSelectableOne: true,
+      var map = new jsVectorMap({
+        map: "world_merc",
+        selector: document.querySelector("#map"),
+        zoomButtons: true,
 
-      regionStyle: {
-        initial: { fill: '#d1d5db ' },       
-      },
-   
+        regionsSelectable: true,
+        regionsSelectableOne: true,
+        markersSelectable: true,
+        markersSelectableOne: true,
 
-      // Labels
-      labels: {
-        markers: {
-          render: function(marker) {
-            return marker.name
+        regionStyle: {
+          initial: { fill: "#d1d5db " },
+          selected: { fill: "url(#skyGradient) gray" },
+        },
+
+        // Labels
+        labels: {
+          markers: {
+            render: function (marker) {
+              return marker.name;
+            },
           },
         },
-      },
 
-      // Marker and label style
-      markers: markers,
-      markerStyle: { initial: { fill: '#66F' } },
+        // Marker and label style
+        markers: markers,
+        markerStyle: { initial: { fill: "#66F" } },
 
-      // Event handling
-      onLoaded: function(map) {        
-        
-      },
-      onViewportChange: function(x, y, z) {
-        console.log(x, y, z);
-      },
-      onRegionSelected: function (index, isSelected, selectedRegions) {
-        
-        // CHECK WHETHER A REGION IS SELECTED OR NOT
-       
-          main_grid.style.gridTemplateRows="15vh repeat(2, min-content)";
-          
-        description_block.style.display="block";        
-        // FOR HEADING
-        description_head.innerHTML=(CountryCodes[index]);
-        // FOR DESCRIPTION
-        description_info.innerHTML="Canada is a country in the northern part of North America. Its ten provinces and three territories extend from the Atlantic to the Pacific and northward into the Arctic Ocean, covering 9.98 million square kilometres, making it the world's second-largest country by total area."             
-        console.log("regionSelected",index, isSelected, selectedRegions);
-      },
+        // Event handling
+        onLoaded: function (map) {},
+        onViewportChange: function (x, y, z) {
+          console.log(x, y, z);
+        },
+        onRegionSelected: function (index, isSelected, selectedRegions) {
+          // CHECK WHETHER A REGION IS SELECTED OR NOT
 
-      // TO SHOW CASE A BLOCK OVER THE TOOL TIP
-      onRegionTooltipShow: function (tooltip, index) {
-        console.log(tooltip, index)
+          description_block.style.display = "block";
+          // FOR HEADING
+          description_head.innerHTML = CountryCodes[index];
+          // FOR DESCRIPTION
+          description_info.innerHTML =
+            "Canada is a country in the northern part of North America. Its ten provinces and three territories extend from the Atlantic to the Pacific and northward into the Arctic Ocean, covering 9.98 million square kilometres, making it the world's second-largest country by total area.";
+          console.log("regionSelected", index, isSelected, selectedRegions);
+        },
 
-        tooltip.css({ zIndex:20,backgroundColor: 'white', color: '#35373e' }).text(
-          tooltip.text() 
-        )
-      },
+        // TO SHOW CASE A BLOCK OVER THE TOOL TIP
+        onRegionTooltipShow: function (tooltip, index) {
+          console.log(tooltip, index);
 
-      // IF THE MARKER IS SELECTED
-      onMarkerSelected: function (code, isSelected, selectedMarkers) {
-        console.log(code, isSelected, selectedMarkers)
-      },
+          tooltip
+            .css({ zIndex: 20, backgroundColor: "white", color: "#35373e" })
+            .text(tooltip.text());
+        },
 
-      //IF  
-      onMarkerTooltipShow: function (tooltip, code) {
-        tooltip.text(
-          tooltip.text() 
-        )
-      },
-    })
-    // setInterval(function(){ 
-    //     if(map.getSelectedRegions().length>0){
-    //       selectedRegionCheck =true
-    //     }
-    //     if(!selectedRegionCheck){
-    //       console.log("HELLO NONBE");
-    //       // description_block.style.display="none";
-    //     }
-    // }, 1);
-  </script>
-</body>
+        // IF THE MARKER IS SELECTED
+        onMarkerSelected: function (code, isSelected, selectedMarkers) {
+          console.log(code, isSelected, selectedMarkers);
+        },
+
+        //IF
+        onMarkerTooltipShow: function (tooltip, code) {
+          tooltip.text(tooltip.text());
+        },
+      });
+      // setInterval(function(){
+      //     if(map.getSelectedRegions().length>0){
+      //       selectedRegionCheck =true
+      //     }
+      //     if(!selectedRegionCheck){
+      //       console.log("HELLO NONBE");
+      //       // description_block.style.display="none";
+      //     }
+      // }, 1);
+    </script>
+  </body>
 </html>
