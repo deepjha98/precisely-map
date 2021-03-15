@@ -242,7 +242,7 @@ text,
   display: grid;
   grid-template-rows: 15vh min-content;
   position: absolute;
-
+  align-content: center;
   min-width: 100%;
   z-index: 15;
   top: 0;
@@ -287,18 +287,18 @@ text,
   position: absolute;
   top: 0;
   left: 0;
+  @media only screen and (max-width: $bp-medium-next) {
+    border-radius: 15px;
+    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.3);
+    padding: 2.5rem;
+    height: 25%;
+  }
 
   @media only screen and (max-width: $bp-small) {
     border-radius: 15px;
     box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.3);
     padding: 2rem;
     height: 10%;
-  }
-  @media only screen and (max-width: $bp-medium-next) {
-    border-radius: 15px;
-    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.3);
-    padding: 2.5rem;
-    height: 25%;
   }
 
   &-head {
@@ -333,13 +333,13 @@ text,
     grid-gap: 1.5rem;
     z-index: 200000;
 
-    @media only screen and (max-width: $bp-small) {
-      top: 7rem;
-      margin-top: 0%;
-      padding: 1.5rem;
-    }
     @media only screen and (max-width: $bp-medium-next) {
       top: 22%;
+    }
+    @media only screen and (max-width: $bp-small) {
+      top: 11%;
+      margin-top: 0%;
+      padding: 1.5rem;
     }
     &-item {
       // THIS IS THE VIOLET AND PINK COLOR MULTIPLE CARD
@@ -406,7 +406,7 @@ text,
 .header {
   padding: 1rem 4rem;
   @media only screen and (max-width: $bp-small) {
-    padding: 1rem 1rem;
+    padding: 3rem;
   }
 }
 

@@ -33,16 +33,19 @@ body {
   font-size: 0.925rem;
 }
 
-.workspace-wrapper #map {
+.workspace-wrapper .map {
   max-width: 90vw;
   height: 78vh;
-  margin: 2rem auto 0;
-
-  @media only screen and (max-width: 700px) {
-    height: 70vh;
+  margin: 2rem auto;
+}
+@media screen and (max-width: 800px) {
+  .workspace-wrapper .map {
+    height: 68vh;
   }
-  @media only screen and (max-width: 500px) {
-    height: 50vh;
-    margin: 0rem auto 0;
+}
+@media screen and (max-width: 500px) {
+  .workspace-wrapper .map {
+    height: 55vh;
+    margin: 0rem auto;
   }
 }
