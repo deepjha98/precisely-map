@@ -22,7 +22,7 @@
           <stop offset="0%" stop-color="lightblue" stop-opacity=".5">
             <animate
               attributeName="stop-color"
-              values="#ee7752; #e73c7e; #23a6d5; #23d5ab"
+              values="#ff00d8; #ff00d8; #8e66fc; #8e66fc"
               dur="2s"
               repeatCount="indefinite"
             />
@@ -31,7 +31,7 @@
           <stop offset="100%" stop-color="lightblue" stop-opacity=".5">
             <animate
               attributeName="stop-color"
-              values="#23d5ab;#23a6d5;#e73c7e;#ee7752;"
+              values="#8e66fc;#01b3fb;#01b3fb;#ff00d8;"
               dur="2s"
               repeatCount="indefinite"
             />
@@ -214,12 +214,13 @@
         markersSelectableOne: true,
 
         regionStyle: {
-          initial: { fill: "#d1d5db " },
+          initial: { fill: "rgba(256,256,256,0.8) " },
           selected: { fill: " gray" },
         },
         series: {
           regions: [
             {
+              className: "svg-map-anim",
               attribute: "fill",
               legend: {
                 title: "World Map",
